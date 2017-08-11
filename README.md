@@ -10,10 +10,10 @@
 - `confd`: watch etcd for nodes arriving/leaving - template nginx configuration files / reload nginx on change
 
 ## Docker Containers Used:
-- `willrstern/node-sample`: a sample node.js app that simply echoes it's APPNAME environment variable
-- `willrstern/nginx-lb`: a reusable nginx + confd image
+- `jeevaS/node-sample`: a sample node.js app that simply echoes it's APPNAME environment variable
+- `jeevaS/nginx-lb`: a reusable nginx + confd image
   - uses confd to watch etcd and configure nginx to load balance for multiple docker containers
   - watches etcd `keys/services/<servicename>/upstream/*` and reloads nginx with an updated config when upstream nodes change
   - requires 2 env variables: `SERVICE_NAME` and `ETCD` so it knows which servicename to watch in etcd's registry
-- `willrstern/nginx-dns`: an nginx + confd image for dynamic DNS based off of etcd `keys/subdomain/*` entries
+- `jeevaS/nginx-dns`: an nginx + confd image for dynamic DNS based off of etcd `keys/subdomain/*` entries
   - requires 1 env variable: `ETCD` the ip address + port of the etcd instance it's watching
